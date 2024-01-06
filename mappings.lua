@@ -21,16 +21,42 @@ M.dap = {
     }
   }
 }
-
+local opts = { silent = true }
 M.crates = {
   plugin = true,
   n = {
     ["<leader>rcu"] = {
       function ()
-        require('crates').upgrade_all_crates()
+        require('crates').upgrade_all_crates(opts)
       end,
       "update crates"
-    }
+    },
+    ["<leader>rct"] = {
+      function ()
+        require('crates').toggle(opts)
+      end,
+      "toggle crates version display"
+    },
+    ["<leader>rcr"] = {
+      function ()
+        require('crates').reload(opts)
+      end,
+      "reload crates"
+    },
+    ["<leader>rcf"] = {
+      function ()
+        require('crates').show_features_popup(opts)
+        require('crates').focus_popup(1)
+      end,
+      "show features popup"
+    },
+    ["<leader>rcD"] = {
+      function ()
+        require('crates').open_documentation(opts)
+      end,
+      "reload crates"
+    },
+
   }
 }
 
